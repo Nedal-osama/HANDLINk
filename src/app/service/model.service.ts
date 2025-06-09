@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ModelService {
 
-  private predictUrl = 'http://sign-language.runasp.net/api/SignPrediction/predict';
-  private historyUrl = 'http://sign-language.runasp.net/api/SignPrediction/userPredictions';
+  private predictUrl = 'https://sign-language.runasp.net/api/SignPrediction/predict';
+  private historyUrl = 'https://sign-language.runasp.net/api/SignPrediction/userPredictions';
 
   constructor(private http: HttpClient) {}
 

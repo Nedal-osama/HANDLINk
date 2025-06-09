@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   constructor(private _HttpClient: HttpClient) {}
   userInfo: any = null;
-  baseUrl: string = `http://sign-language.runasp.net/api/Account/`;
+  baseUrl: string = `https://sign-language.runasp.net/api/Account/`;
 
   register(userData: object): Observable<any> {
     return this._HttpClient.post<any>(this.baseUrl + `register`, userData);

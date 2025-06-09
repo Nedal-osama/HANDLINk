@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ForgetPasswordService {
-  private baseUrl: string = 'http://sign-language.runasp.net/api/Account';
+  private baseUrl: string = 'https://sign-language.runasp.net/api/Account';
 
   constructor(private _HttpClient: HttpClient) {}
 
