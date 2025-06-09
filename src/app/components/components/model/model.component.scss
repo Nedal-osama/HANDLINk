@@ -1,0 +1,303 @@
+.model-section {
+  padding: 3rem 1rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+
+  .model-container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+
+    .model-title {
+      color: #1E88E5;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) skewX(-15deg);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, #1E88E5 0%, #42A5F5 50%, #1E88E5 100%);
+        opacity: 0.9;
+        filter: drop-shadow(0 2px 2px rgba(30, 136, 229, 0.3));
+      }
+    }
+
+    .model-box {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+      margin-bottom: 1.5rem;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      .upload-area {
+        color: #455A64;
+
+        .upload-icon {
+          font-size: 3rem;
+          color: #1E88E5;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+        }
+
+        .upload-btn {
+          background: #1E88E5;
+          color: white;
+          padding: 0.6rem 1.2rem;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          display: inline-block;
+
+          &:hover {
+            background: #1565C0;
+          }
+        }
+      }
+
+      .image-preview {
+        img {
+          max-width: 100%;
+          max-height: 220px;
+          border-radius: 8px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .model-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+      }
+
+      .run-btn {
+        background-color: #1E88E5;
+        color: white;
+
+        &:hover {
+          background-color: #1565C0;
+        }
+      }
+
+      .delete-btn {
+        background-color: #E53935;
+        color: white;
+
+        &:hover {
+          background-color: #B71C1C;
+        }
+      }
+    }
+
+    .loading-text {
+      font-size: 1rem;
+      color: #718096;
+      margin-bottom: 1rem;
+    }
+
+    .result-box {
+      background: #E3F2FD;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #263238;
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .speak-btn {
+        background-color: #1976D2;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+          background-color: #0D47A1;
+        }
+      }
+    }
+  }
+}
+.history-section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.history-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color:#1E88E5;
+  border-bottom: 2px solid #1E88E5;
+  padding-bottom: 8px;
+}
+
+.history-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.history-item:hover {
+  background-color: #f9fbff;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.item-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 1rem;
+  color: #202124;
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.item-meta {
+  font-size: 0.85rem;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+}
+
+.time {
+  margin-left: auto;
+  font-style: italic;
+}
+
+/* زر الحذف */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #d93025;
+  font-weight: bold;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  color: #a52714;
+}
+
+.history-footer {
+  padding: 14px 0 0;
+  text-align: center;
+}
+
+.see-more {
+  color: #1E88E5;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.see-more:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .model-section {
+    .model-container {
+      .model-title {
+        font-size: 1.5rem;
+      }
+
+      .model-box {
+        padding: 1.5rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .result-box {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}

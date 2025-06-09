@@ -1,0 +1,70 @@
+<section class="model-section">
+  <div class="model-container">
+    <h1 class="model-title">Sign Language Recognition</h1>
+
+    <div class="model-box"
+         (drop)="onFileDropped($event)"
+         (dragover)="onDragOver($event)">
+
+      <div class="upload-area" *ngIf="!imageSrc">
+        <i class="fas fa-upload upload-icon"></i>
+        <p>Drag & Drop your image here or</p>
+        <label class="upload-btn">
+          Choose File
+          <input type="file" (change)="onImageSelected($event)" hidden>
+        </label>
+      </div>
+
+      <div class="image-preview" *ngIf="imageSrc">
+        <img [src]="imageSrc" alt="Preview Image">
+      </div>
+    </div>
+
+    <div class="btn-group" *ngIf="imageSrc">
+      <button class="model-btn run-btn" (click)="runModel()">
+        <i class="fas fa-play"></i> Run Model
+      </button>
+
+      <button class="model-btn delete-btn" (click)="removeImage()">
+        <i class="fas fa-trash-alt"></i> Remove Image
+      </button>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-text">
+      Processing image...
+    </div>
+
+    <div class="result-box" *ngIf="recognizedText">
+      <p>{{ recognizedText }}</p>
+      <button class="model-btn speak-btn" (click)="speakText()">
+        <i class="fas fa-volume-up"></i> Speak Text
+      </button>
+    </div>
+<!-- History Section -->
+
+<div class="history-section" *ngIf="history && history.length > 0">
+  <h2>Recognition History</h2>
+  <div class="history-container">
+    <div class="history-item" *ngFor="let item of displayedHistory; let i = index">
+      <div class="item-icon">
+        <img [src]="'http://sign-language.runasp.net/Files/Uploads/' + item.imagePath" alt="History Image" />
+      </div>
+      <div class="item-details">
+        <div class="item-title">{{ item.result }}</div>
+        <div class="item-meta">
+          <span class="time">{{ item.predictTime | date:'MMM d, h:mm a' }}</span>
+        </div>
+      </div>
+      <button class="delete-btn" (click)="deleteHistoryItem(i)" aria-label="Delete history item">✕</button>
+    </div>
+  </div>
+
+  <div class="history-footer" *ngIf="history.length > 3">
+    <a href="#" class="see-more" (click)="toggleSeeMore($event)">
+      {{ showAll ? 'See less' : 'See more' }}
+    </a>
+  </div>
+</div>
+
+  </div>
+</section>

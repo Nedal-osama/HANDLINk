@@ -1,0 +1,57 @@
+<div *ngIf="isLoading" class="loading-screen">
+  <div class="loader">
+    <div class="spinner"></div>
+    <p>Loading</p>
+  </div>
+</div>
+
+<!-- Step 1: Enter Email or Phone Number -->
+<section *ngIf="step1" class=" mx-auto rounded bg-main-t p-3 shadow mt-5">
+  <div class="mb-3">
+    <button (click)="toggleMethod(true)" [class.active]="isEmail" class="btn  me-2">Email</button>
+    <button (click)="toggleMethod(false)" [class.active]="!isEmail" class="btn ">Phone Number</button>
+  </div>
+
+  <form [formGroup]="forgotForm" (ngSubmit)="forgotPassword()">
+    <div *ngIf="isEmail">
+      <label class="header fw-bold mx-auto fs-1 text-center header position-relative d-flex justify-content-center align-items-end h2"
+       for="email">Email</label>
+      <input formControlName="email" type="email" id="email" class="form-control mt-4" placeholder="Enter your email">
+    </div>
+
+    <div *ngIf="!isEmail">
+      <label class="header fw-bold mx-auto fs-1 text-center header position-relative d-flex justify-content-center align-items-end h2"
+       for="phoneNumber">Phone Number</label>
+      <input formControlName="phoneNumber" type="text" id="phoneNumber" class="form-control mt-4"
+       placeholder="Enter your Telegram number with +2">
+    </div>
+
+    <button class="main-btn mt-3 w-100">Send Code</button>
+    <p *ngIf="userMsg" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}"
+     class="alert w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+  </form>
+</section>
+
+<!-- Step 2: Enter Verification Code -->
+<section *ngIf="step2" class="w-50 mx-auto rounded bg-main-t p-3 shadow mt-5">
+  <form [formGroup]="resetCodeForm" (ngSubmit)="resetCode()">
+    <label class="header fw-bold mx-auto fs-1 text-center header position-relative d-flex justify-content-center align-items-end h2"
+     for="resetCode">Verification Code</label>
+    <input formControlName="resetCode" type="text" id="resetCode" class="form-control mt-4" placeholder="Enter the code">
+    <button class="main-btn mt-3 w-100">Verify</button>
+    <p *ngIf="userMsg" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}"
+     class="alert w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+  </form>
+</section>
+
+<!-- Step 3: Reset Password -->
+<section *ngIf="step3" class="w-50 mx-auto rounded bg-main-t p-3 shadow mt-5">
+  <form [formGroup]="resetPasswordForm" (ngSubmit)="newPassword()">
+    <label class="header fw-bold mx-auto fs-1 text-center header position-relative d-flex justify-content-center align-items-end h2"
+     for="newPassword">New Password</label>
+    <input formControlName="newPassword" type="password" id="newPassword" class="form-control mt-4" placeholder="Enter new password">
+    <button class="main-btn mt-3 w-100">Reset Password</button>
+    <p *ngIf="userMsg" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}"
+     class="alert w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+  </form>
+</section>

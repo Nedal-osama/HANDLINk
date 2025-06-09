@@ -1,0 +1,49 @@
+// Variables
+$main-color: #1565C0;
+$light-color: #f3f2f0;
+
+$font-family: "Encode Sans Expanded", sans-serif;
+$main-transition: 0.8s;
+
+// Scrollbar Styling
+
+html, body {
+  overflow: auto;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+// Base Styles
+body {
+  font-family: $font-family;
+  transition: $main-transition;
+  background-color: #FEFCFB;
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.nav-link {
+  transition: unset !important;
+}
+
+
+
+.active-link {
+  color: #fff !important;
+  background-color: $main-color !important;
+  border-radius: 5px !important;
+  padding: 6px 12px;
+}
+
+.cr {
+  cursor: pointer;
+}
+
+
+
+
+

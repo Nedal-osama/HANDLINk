@@ -1,0 +1,181 @@
+$primary-color: #1E88E5;
+$primary-hover: #1565C0;
+$error-color: #E53935;
+$light-gray: #F5F7FA;
+$medium-gray: #B0BEC5;
+$dark-gray: #455A64;
+$text-color: #263238;
+$white: #FFFFFF;
+$spacing-unit: 1rem;
+$border-radius: 8px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .loading-content {
+    text-align: center;
+    color: $white;
+  }
+
+  .loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto $spacing-unit;
+  }
+
+  .loading-text {
+    font-size: 1.1rem;
+    margin-top: $spacing-unit;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  padding: $spacing-unit * 2;
+  background-color: $light-gray;
+}
+
+.auth-card {
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  width: 100%;
+  max-width: 550px;
+  padding: $spacing-unit * 2.5;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: $spacing-unit * 2;
+
+  .auth-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: $spacing-unit * 0.5;
+  }
+
+  .auth-subtitle {
+    color: $dark-gray;
+    font-size: 0.95rem;
+  }
+}
+
+.auth-form {
+  .form-group {
+    margin-bottom: $spacing-unit * 1.5;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: $spacing-unit * 0.5;
+    font-weight: 500;
+    color: $text-color;
+    font-size: 0.95rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: $spacing-unit * 0.75;
+    border: 1px solid $medium-gray;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+    }
+
+    &.input-error {
+      border-color: $error-color;
+    }
+  }
+
+  .error-message {
+    color: $error-color;
+    font-size: 0.85rem;
+    margin-top: $spacing-unit * 0.5;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-unit * 2;
+
+  .forgot-password {
+    color: $primary-color;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary-hover;
+      text-decoration: underline;
+    }
+  }
+}
+
+.auth-button {
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: $border-radius;
+  padding: $spacing-unit * 0.75 $spacing-unit * 1.5;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-hover;
+  }
+
+  &.button-disabled {
+    background-color: $medium-gray;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.auth-error {
+  background-color: rgba($error-color, 0.1);
+  color: $error-color;
+  padding: $spacing-unit * 0.75;
+  border-radius: $border-radius;
+  margin-top: $spacing-unit * 1.5;
+  font-size: 0.9rem;
+  text-align: center;
+}

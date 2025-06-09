@@ -1,0 +1,66 @@
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="loading-content">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Authenticating...</p>
+  </div>
+</div>
+<main class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Please enter your credentials to login</p>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="handelForm()" class="auth-form">
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          formControlName="email"
+          type="email"
+          id="email"
+          class="form-input"
+          [ngClass]="{'input-error': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+          placeholder="your@email.com"
+          autocomplete="username"
+        >
+        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="error-message">
+          <span *ngIf="loginForm.get('email')?.getError('required')">Email is required</span>
+          <span *ngIf="loginForm.get('email')?.getError('email')">Please enter a valid email address</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          class="form-input"
+          [ngClass]="{'input-error': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+        >
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="error-message">
+          <span *ngIf="loginForm.get('password')?.getError('required')">Password is required</span>
+          <span *ngIf="loginForm.get('password')?.getError('pattern')">
+            Password must be at least 6 characters containing letters and numbers
+          </span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a routerLink="/forgot" class="forgot-password">Forgot Password?</a>
+        <button
+          type="submit"
+          class="auth-button"
+          [disabled]="loginForm.invalid"
+          [ngClass]="{'button-disabled': loginForm.invalid}"
+        >
+          Sign In
+        </button>
+      </div>
+
+      <div *ngIf="errMsg" class="auth-error">
+        {{ errMsg }}
+      </div>
+    </form>
+  </div>
+</main>
